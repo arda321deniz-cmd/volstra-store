@@ -1,0 +1,884 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VOLSTRA — Siparişi Tamamla</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#070707;
+    color:#fff;
+    font-family:Inter,Arial,sans-serif;
+    min-height:100vh;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+header{
+    height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:#090909;
+    border-bottom:1px solid #222;
+}
+
+.logo{
+    font-family:Montserrat;
+    font-size:23px;
+    font-weight:800;
+    letter-spacing:6px;
+}
+
+.logo span{
+    color:#777;
+}
+
+.back{
+    color:#888;
+    font-size:10px;
+    font-weight:700;
+}
+
+.back:hover{
+    color:#fff;
+}
+
+.container{
+    width:min(1100px,90%);
+    margin:60px auto;
+}
+
+.title{
+    margin-bottom:40px;
+}
+
+.title small{
+    color:#666;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.title h1{
+    font-family:Montserrat;
+    font-size:48px;
+    margin-top:10px;
+    letter-spacing:-2px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:25px;
+}
+
+.box{
+    background:#101010;
+    border:1px solid #222;
+    padding:30px;
+}
+
+.box h2{
+    font-family:Montserrat;
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+label{
+    display:block;
+    color:#888;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+input,
+textarea{
+    width:100%;
+    background:#080808;
+    color:#fff;
+    border:1px solid #303030;
+    padding:14px;
+    outline:none;
+    font-family:Inter;
+    font-size:13px;
+}
+
+textarea{
+    height:95px;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#fff;
+}
+
+.summary-product{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid #222;
+}
+
+.summary-product-name{
+    font-size:12px;
+    font-weight:700;
+}
+
+.summary-product-details{
+    color:#666;
+    font-size:10px;
+    margin-top:5px;
+}
+
+.summary-price{
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid #333;
+}
+
+.total span:first-child{
+    color:#777;
+    font-size:11px;
+}
+
+.total span:last-child{
+    font-family:Montserrat;
+    font-size:22px;
+}
+
+.submit{
+    width:100%;
+    height:55px;
+    margin-top:25px;
+    background:#fff;
+    color:#000;
+    border:1px solid #fff;
+    font-weight:800;
+    letter-spacing:1.5px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit:hover{
+    background:#000;
+    color:#fff;
+}
+
+.submit:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.login-warning{
+    background:#151515;
+    border:1px solid #333;
+    padding:25px;
+    margin-bottom:25px;
+    color:#aaa;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.login-warning strong{
+    color:#fff;
+}
+
+.login-button{
+    display:inline-flex;
+    margin-top:15px;
+    padding:12px 18px;
+    background:#fff;
+    color:#000;
+    font-size:10px;
+    font-weight:800;
+}
+
+.empty{
+    text-align:center;
+    padding:40px 10px;
+    color:#666;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.success-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#fff;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    margin:0 auto 25px;
+}
+
+.success h2{
+    font-family:Montserrat;
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.success p{
+    color:#777;
+    line-height:1.8;
+    font-size:13px;
+}
+
+.order-number{
+    color:#fff;
+    font-weight:800;
+}
+
+@media(max-width:800px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .title h1{
+        font-size:38px;
+    }
+
+}
+
+@media(max-width:550px){
+
+    header{
+        padding:0 5%;
+    }
+
+    .container{
+        width:90%;
+        margin:40px auto;
+    }
+
+    .box{
+        padding:20px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="logo">
+        VOLS<span>TRA</span>
+    </a>
+
+    <a href="cart.html" class="back">
+        ← SEPETE DÖN
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="title">
+
+        <small>VOLSTRA / CHECKOUT</small>
+
+        <h1>Siparişi Tamamla.</h1>
+
+    </div>
+
+
+    <div id="loginWarning" class="login-warning" style="display:none">
+
+        <strong>Satın almak için giriş yapmalısın.</strong>
+
+        <br>
+
+        Sipariş verebilmek için önce VOLSTRA hesabına giriş yap.
+
+        <br>
+
+        <a href="account.html" class="login-button">
+            HESABIMA GİT →
+        </a>
+
+    </div>
+
+
+    <div id="checkoutArea">
+
+        <div class="grid">
+
+
+            <!-- TESLİMAT -->
+
+            <div class="box">
+
+                <h2>Teslimat Bilgileri</h2>
+
+                <form id="orderForm">
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label>AD</label>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                required
+                                placeholder="Adınız"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>SOYAD</label>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                required
+                                placeholder="Soyadınız"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>TELEFON</label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                required
+                                placeholder="05XX XXX XX XX"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>POSTA KODU</label>
+
+                            <input
+                                type="text"
+                                id="postalCode"
+                                placeholder="16000"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>İL</label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                required
+                                placeholder="Bursa"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>İLÇE</label>
+
+                            <input
+                                type="text"
+                                id="district"
+                                required
+                                placeholder="İlçe"
+                            >
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label>AÇIK ADRES</label>
+
+                            <textarea
+                                id="address"
+                                required
+                                placeholder="Mahalle, sokak, bina no, daire no..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label>SİPARİŞ NOTU — OPSİYONEL</label>
+
+                            <textarea
+                                id="note"
+                                placeholder="Kargo için eklemek istediğiniz not..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit"
+                        id="submitButton"
+                    >
+                        SİPARİŞİ TAMAMLA →
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ÖZET -->
+
+            <div class="box">
+
+                <h2>Sipariş Özeti</h2>
+
+                <div id="summary"></div>
+
+                <div class="total">
+
+                    <span>TOPLAM</span>
+
+                    <span id="totalPrice">
+                        ₺0
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BAŞARILI -->
+
+    <div class="success" id="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Siparişin alındı.</h2>
+
+        <p>
+
+            Teşekkürler <span id="customerName"></span>.
+
+            <br>
+
+            Sipariş numaran:
+
+            <span class="order-number" id="orderNumber"></span>
+
+            <br><br>
+
+            Siparişin başarıyla kaydedildi.
+
+        </p>
+
+        <br>
+
+        <a href="index.html" class="login-button">
+            ALIŞVERİŞE DEVAM ET
+        </a>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =========================================
+   SEPET
+========================================= */
+
+let cart = JSON.parse(
+    localStorage.getItem("volstraCart") || "[]"
+);
+
+
+/* =========================================
+   HESAP
+========================================= */
+
+let account =
+    JSON.parse(
+        localStorage.getItem("volstraAccount") || "null"
+    );
+
+
+/*
+   Bazı account.html sürümlerinde
+   kullanıcı "volstraUser" olarak kaydedilmiş olabilir.
+*/
+
+if(!account){
+
+    account =
+        JSON.parse(
+            localStorage.getItem("volstraUser") || "null"
+        );
+
+}
+
+
+/* =========================================
+   GİRİŞ KONTROLÜ
+========================================= */
+
+if(!account){
+
+    document.getElementById("loginWarning").style.display =
+        "block";
+
+    document.getElementById("checkoutArea").style.opacity =
+        ".35";
+
+}
+
+
+/* =========================================
+   SEPET ÖZETİ
+========================================= */
+
+const summary =
+    document.getElementById("summary");
+
+let total = 0;
+
+
+function money(price){
+
+    return "₺" + Number(price || 0)
+        .toLocaleString("tr-TR");
+
+}
+
+
+if(cart.length === 0){
+
+    summary.innerHTML = `
+        <div class="empty">
+            Sepetinizde ürün bulunmamakta.
+        </div>
+    `;
+
+}else{
+
+    summary.innerHTML = "";
+
+    cart.forEach(item => {
+
+        const name =
+            item.name ||
+            item.title ||
+            "VOLSTRA Ürün";
+
+        const price =
+            Number(item.price || 0);
+
+        const qty =
+            Number(
+                item.qty ||
+                item.quantity ||
+                1
+            );
+
+        const size =
+            item.size || "-";
+
+        const color =
+            item.color || "-";
+
+        total += price * qty;
+
+
+        summary.innerHTML += `
+
+            <div class="summary-product">
+
+                <div>
+
+                    <div class="summary-product-name">
+                        ${name}
+                    </div>
+
+                    <div class="summary-product-details">
+
+                        Beden: ${size}
+                        <br>
+
+                        Renk: ${color}
+                        <br>
+
+                        Adet: ${qty}
+
+                    </div>
+
+                </div>
+
+                <div class="summary-price">
+                    ${money(price * qty)}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+document.getElementById("totalPrice").textContent =
+    money(total);
+
+
+/* =========================================
+   SİPARİŞ OLUŞTUR
+========================================= */
+
+document
+.getElementById("orderForm")
+.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+
+    /* HESAP KONTROL */
+
+    if(!account){
+
+        alert(
+            "Sipariş vermek için önce hesap oluşturmalı veya giriş yapmalısın."
+        );
+
+        location.href="account.html";
+
+        return;
+
+    }
+
+
+    /* SEPET KONTROL */
+
+    if(cart.length===0){
+
+        alert("Sepetinizde ürün bulunmuyor.");
+
+        location.href="cart.html";
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById("submitButton");
+
+    button.disabled=true;
+
+    button.textContent =
+        "SİPARİŞ KAYDEDİLİYOR...";
+
+
+    /* MÜŞTERİ BİLGİLERİ */
+
+    const customer={
+
+        name:
+            document.getElementById("firstName")
+            .value.trim(),
+
+        surname:
+            document.getElementById("lastName")
+            .value.trim(),
+
+        phone:
+            document.getElementById("phone")
+            .value.trim(),
+
+        city:
+            document.getElementById("city")
+            .value.trim(),
+
+        district:
+            document.getElementById("district")
+            .value.trim(),
+
+        address:
+            document.getElementById("address")
+            .value.trim(),
+
+        postalCode:
+            document.getElementById("postalCode")
+            .value.trim(),
+
+        note:
+            document.getElementById("note")
+            .value.trim()
+
+    };
+
+
+    /* SİPARİŞ NUMARASI */
+
+    const orderNumber =
+        "VOL-" +
+        Math.floor(
+            10000 +
+            Math.random()*90000
+        );
+
+
+    /* SİPARİŞ */
+
+    const order={
+
+        id:orderNumber,
+
+        date:new Date()
+            .toLocaleString("tr-TR"),
+
+        status:"Sipariş alındı",
+
+        customer:customer,
+
+        items:cart,
+
+        total:total
+
+    };
+
+
+    /* ESKİ SİPARİŞLER */
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem("volstraOrders") || "[]"
+        );
+
+
+    /* YENİ SİPARİŞİ EN ÜSTE EKLE */
+
+    orders.unshift(order);
+
+
+    /* KAYDET */
+
+    localStorage.setItem(
+        "volstraOrders",
+        JSON.stringify(orders)
+    );
+
+
+    /* SEPETİ TEMİZLE */
+
+    localStorage.removeItem("volstraCart");
+
+
+    /* BAŞARI EKRANI */
+
+    document.getElementById("checkoutArea")
+        .style.display="none";
+
+    document.getElementById("loginWarning")
+        .style.display="none";
+
+    document.getElementById("success")
+        .style.display="block";
+
+
+    document.getElementById("customerName")
+        .textContent=customer.name;
+
+
+    document.getElementById("orderNumber")
+        .textContent=orderNumber;
+
+
+    button.disabled=false;
+
+});
+
+</script>
+
+</body>
+</html>
+```

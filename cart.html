@@ -1,0 +1,1165 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>VOLSTRA — Sepetim</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:Arial,sans-serif
+}
+
+a{
+    text-decoration:none;
+    color:inherit
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer
+}
+
+/* HEADER */
+
+header{
+    height:76px;
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:#080808;
+    border-bottom:1px solid #222
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:6px
+}
+
+.logo span{
+    color:#666
+}
+
+nav{
+    display:flex;
+    gap:28px
+}
+
+nav a{
+    color:#888;
+    font-size:10px;
+    font-weight:bold
+}
+
+nav a:hover{
+    color:#fff
+}
+
+.actions{
+    display:flex;
+    gap:7px
+}
+
+.action{
+    height:40px;
+
+    border:1px solid #292929;
+
+    background:#111;
+    color:#fff;
+
+    border-radius:20px;
+
+    padding:0 15px;
+
+    font-size:10px;
+
+    transition:.3s
+}
+
+.action:hover{
+    background:#fff;
+    color:#000
+}
+
+
+/* PAGE */
+
+.page{
+    padding:80px 7%;
+
+    max-width:1300px;
+
+    margin:auto
+}
+
+.title{
+    margin-bottom:40px
+}
+
+.title small{
+    color:#555;
+
+    letter-spacing:3px;
+
+    font-size:9px
+}
+
+.title h1{
+    font-size:55px;
+
+    letter-spacing:-3px;
+
+    margin-top:10px
+}
+
+
+/* LAYOUT */
+
+.layout{
+    display:grid;
+
+    grid-template-columns:1.5fr .8fr;
+
+    gap:30px
+}
+
+.items{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px
+}
+
+
+/* ITEM */
+
+.item{
+    display:flex;
+
+    gap:20px;
+
+    background:#101010;
+
+    border:1px solid #202020;
+
+    padding:18px;
+
+    transition:.3s
+}
+
+.item:hover{
+    border-color:#444
+}
+
+.item-image{
+    width:140px;
+    height:170px;
+
+    background:#181818;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden
+}
+
+.item-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover
+}
+
+.item-image span{
+    font-size:11px;
+    color:#555
+}
+
+.item-info{
+    flex:1
+}
+
+.item-name{
+    font-weight:bold;
+
+    font-size:15px;
+
+    margin-bottom:10px
+}
+
+.meta{
+    color:#666;
+
+    font-size:10px;
+
+    line-height:1.9
+}
+
+.item-price{
+    font-weight:bold;
+
+    margin-top:12px
+}
+
+
+/* CONTROLS */
+
+.controls{
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:15px
+}
+
+.qty{
+    width:32px;
+    height:32px;
+
+    border:1px solid #333;
+
+    background:#080808;
+
+    color:#fff
+}
+
+.qty:hover{
+    background:#fff;
+    color:#000
+}
+
+.remove{
+    margin-left:10px;
+
+    background:none;
+
+    border:0;
+
+    color:#666;
+
+    font-size:10px
+}
+
+.remove:hover{
+    color:#fff
+}
+
+
+/* SUMMARY */
+
+.summary{
+    background:#101010;
+
+    border:1px solid #222;
+
+    padding:28px;
+
+    height:max-content;
+
+    position:sticky;
+
+    top:100px
+}
+
+.summary h2{
+    font-size:20px;
+
+    margin-bottom:25px
+}
+
+.row{
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#777;
+
+    font-size:12px;
+
+    margin:14px 0
+}
+
+.total{
+    border-top:1px solid #333;
+
+    padding-top:20px;
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    color:#fff
+}
+
+
+/* COUPON */
+
+.coupon{
+    display:flex;
+
+    margin-top:25px
+}
+
+.coupon input{
+    width:100%;
+
+    height:43px;
+
+    background:#080808;
+
+    color:#fff;
+
+    border:1px solid #333;
+
+    padding:0 12px;
+
+    outline:none
+}
+
+.coupon button{
+    height:43px;
+
+    padding:0 15px;
+
+    background:#fff;
+
+    color:#000;
+
+    border:0;
+
+    font-size:9px;
+
+    font-weight:bold
+}
+
+
+/* CHECKOUT */
+
+.checkout{
+    width:100%;
+
+    height:55px;
+
+    margin-top:20px;
+
+    background:#fff;
+
+    color:#000;
+
+    border:1px solid #fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:1.5px;
+
+    transition:.3s
+}
+
+.checkout:hover{
+    background:#000;
+
+    color:#fff
+}
+
+
+/* CONTINUE */
+
+.continue{
+    display:block;
+
+    text-align:center;
+
+    margin-top:18px;
+
+    color:#777;
+
+    font-size:10px;
+
+    border-bottom:1px solid #444;
+
+    padding-bottom:5px
+}
+
+.continue:hover{
+    color:#fff
+}
+
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+
+    padding:90px 20px;
+
+    border:1px solid #202020;
+
+    background:#0c0c0c
+}
+
+.empty h2{
+    font-size:25px;
+
+    margin-bottom:12px
+}
+
+.empty p{
+    color:#666;
+
+    font-size:12px;
+
+    margin-bottom:25px
+}
+
+.empty button{
+    height:48px;
+
+    padding:0 25px;
+
+    background:#fff;
+
+    color:#000;
+
+    border:0;
+
+    font-size:10px;
+
+    font-weight:bold
+}
+
+.empty button:hover{
+    background:#ddd
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    nav{
+        display:none
+    }
+
+    .page{
+        padding:55px 5%
+    }
+
+    .layout{
+        grid-template-columns:1fr
+    }
+
+    .summary{
+        position:static
+    }
+
+    .item-image{
+        width:95px;
+        height:120px
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="index.html" class="logo">
+        VOLS<span>TRA</span>
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            ANA SAYFA
+        </a>
+
+        <a href="tshirts.html">
+            TİŞÖRT
+        </a>
+
+        <a href="shorts.html">
+            ŞORT
+        </a>
+
+    </nav>
+
+
+    <div class="actions">
+
+        <button
+            class="action"
+            onclick="location.href='account.html'"
+            id="accountBtn"
+        >
+            HESABIM / GİRİŞ
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="page">
+
+
+    <div class="title">
+
+        <small>
+            VOLSTRA / SHOPPING BAG
+        </small>
+
+        <h1>
+            Sepetim.
+        </h1>
+
+    </div>
+
+
+    <div id="content"></div>
+
+
+</main>
+
+
+<script>
+
+
+/* ==========================================
+   SEPET
+========================================== */
+
+let discount = 0;
+
+
+function getCart(){
+
+    return JSON.parse(
+        localStorage.getItem("volstraCart") || "[]"
+    );
+
+}
+
+
+function saveCart(cart){
+
+    localStorage.setItem(
+        "volstraCart",
+        JSON.stringify(cart)
+    );
+
+    render();
+
+}
+
+
+/* ==========================================
+   ADET DEĞİŞTİR
+========================================== */
+
+function changeQty(index, amount){
+
+    let cart = getCart();
+
+    /*
+       Hem qty hem quantity sistemleriyle
+       uyumlu çalışması için.
+    */
+
+    if(typeof cart[index].qty !== "number"){
+
+        cart[index].qty =
+            Number(cart[index].quantity || 1);
+
+    }
+
+
+    cart[index].qty += amount;
+
+
+    if(cart[index].qty <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    saveCart(cart);
+
+}
+
+
+/* ==========================================
+   ÜRÜN SİL
+========================================== */
+
+function removeItem(index){
+
+    let cart = getCart();
+
+    cart.splice(index,1);
+
+    saveCart(cart);
+
+}
+
+
+/* ==========================================
+   KUPON
+========================================== */
+
+function applyCoupon(){
+
+    const input =
+        document.getElementById("coupon");
+
+    if(!input) return;
+
+
+    const code =
+        input.value.trim().toUpperCase();
+
+
+    if(code === "VOLSTRA10"){
+
+        discount = 10;
+
+        alert(
+            "%10 indirim uygulandı."
+        );
+
+    }else{
+
+        discount = 0;
+
+        alert(
+            "Geçersiz indirim kodu."
+        );
+
+    }
+
+
+    render();
+
+}
+
+
+/* ==========================================
+   CHECKOUT
+========================================== */
+
+function checkout(){
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("volstraUser") || "null"
+        );
+
+
+    /*
+       Hesap yoksa satın alma yapılamaz.
+    */
+
+    if(!user){
+
+        alert(
+            "Satın almak için önce hesap oluşturmalı veya giriş yapmalısın."
+        );
+
+        location.href =
+            "account.html";
+
+        return;
+
+    }
+
+
+    const cart =
+        getCart();
+
+
+    if(!cart.length){
+
+        alert(
+            "Sepetinizde ürün bulunmuyor."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       ARTIK BURADA SİPARİŞ OLUŞTURMUYORUZ.
+
+       Kullanıcı checkout.html'ye gidiyor.
+    */
+
+    location.href =
+        "checkout.html";
+
+}
+
+
+/* ==========================================
+   TOPLAM
+========================================== */
+
+function calculateSubtotal(){
+
+    return getCart().reduce(
+        (sum,x) => {
+
+            const price =
+                Number(x.price || 0);
+
+            const qty =
+                Number(
+                    x.qty ||
+                    x.quantity ||
+                    1
+                );
+
+            return sum + price * qty;
+
+        },
+        0
+    );
+
+}
+
+
+function calculateTotal(){
+
+    const subtotal =
+        calculateSubtotal();
+
+    return Math.round(
+        subtotal *
+        (1 - discount / 100)
+    );
+
+}
+
+
+/* ==========================================
+   RESİM
+========================================== */
+
+function getProductImage(item){
+
+    return (
+        item.image ||
+        item.img ||
+        item.photo ||
+        ""
+    );
+
+}
+
+
+/* ==========================================
+   SAYFAYI OLUŞTUR
+========================================== */
+
+function render(){
+
+
+    /* HESAP */
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("volstraUser") || "null"
+        );
+
+
+    const accountBtn =
+        document.getElementById("accountBtn");
+
+
+    if(user){
+
+        const fullName =
+            (
+                user.name ||
+                ""
+            ) +
+            " " +
+            (
+                user.surname ||
+                ""
+            );
+
+
+        if(fullName.trim()){
+
+            accountBtn.textContent =
+                fullName.trim();
+
+        }
+
+    }
+
+
+    /* SEPET */
+
+    const cart =
+        getCart();
+
+
+    const content =
+        document.getElementById("content");
+
+
+    /* BOŞ SEPET */
+
+    if(cart.length === 0){
+
+        content.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Sepetinizde ürün bulunmamakta.
+                </h2>
+
+                <p>
+                    Henüz sepetine herhangi bir ürün eklemedin.
+                </p>
+
+                <button
+                    onclick="location.href='index.html'"
+                >
+                    ALIŞVERİŞE DEVAM ET
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* HESAPLAR */
+
+    const subtotal =
+        calculateSubtotal();
+
+
+    const discountAmount =
+        Math.round(
+            subtotal *
+            discount /
+            100
+        );
+
+
+    const total =
+        calculateTotal();
+
+
+    /* ÜRÜNLER */
+
+    const items =
+        cart.map((x,i) => {
+
+
+            const qty =
+                Number(
+                    x.qty ||
+                    x.quantity ||
+                    1
+                );
+
+
+            const image =
+                getProductImage(x);
+
+
+            return `
+
+                <div class="item">
+
+
+                    <div class="item-image">
+
+                        ${
+                            image
+
+                            ?
+
+                            `<img
+                                src="${image}"
+                                alt="${x.name || "VOLSTRA ürün"}"
+                            >`
+
+                            :
+
+                            `<span>
+                                VOLSTRA
+                            </span>`
+                        }
+
+                    </div>
+
+
+                    <div class="item-info">
+
+
+                        <div class="item-name">
+                            ${x.name || "VOLSTRA Ürün"}
+                        </div>
+
+
+                        <div class="meta">
+
+                            ${
+                                x.size
+                                ?
+                                `Beden: ${x.size}<br>`
+                                :
+                                ""
+                            }
+
+                            ${
+                                x.color
+                                ?
+                                `Renk: ${x.color}`
+                                :
+                                ""
+                            }
+
+                        </div>
+
+
+                        <div class="item-price">
+
+                            ₺${Number(
+                                x.price || 0
+                            ).toLocaleString("tr-TR")}
+
+                        </div>
+
+
+                        <div class="controls">
+
+
+                            <button
+                                class="qty"
+                                onclick="changeQty(${i},-1)"
+                            >
+                                −
+                            </button>
+
+
+                            <span>
+                                ${qty}
+                            </span>
+
+
+                            <button
+                                class="qty"
+                                onclick="changeQty(${i},1)"
+                            >
+                                +
+                            </button>
+
+
+                            <button
+                                class="remove"
+                                onclick="removeItem(${i})"
+                            >
+                                ÜRÜNÜ SİL
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    /* SAYFA */
+
+    content.innerHTML = `
+
+        <div class="layout">
+
+
+            <div class="items">
+
+                ${items}
+
+            </div>
+
+
+            <div class="summary">
+
+
+                <h2>
+                    Sipariş Özeti
+                </h2>
+
+
+                <div class="row">
+
+                    <span>
+                        Ara toplam
+                    </span>
+
+                    <strong>
+                        ₺${subtotal.toLocaleString("tr-TR")}
+                    </strong>
+
+                </div>
+
+
+                <div class="row">
+
+                    <span>
+                        Kargo
+                    </span>
+
+                    <strong>
+                        ÜCRETSİZ
+                    </strong>
+
+                </div>
+
+
+                ${
+                    discount > 0
+
+                    ?
+
+                    `
+
+                    <div class="row">
+
+                        <span>
+                            İndirim
+                        </span>
+
+                        <strong>
+                            −₺${discountAmount.toLocaleString("tr-TR")}
+                        </strong>
+
+                    </div>
+
+                    `
+
+                    :
+
+                    ""
+                }
+
+
+                <div class="coupon">
+
+
+                    <input
+                        id="coupon"
+                        placeholder="İndirim kodu"
+                    >
+
+
+                    <button
+                        onclick="applyCoupon()"
+                    >
+                        UYGULA
+                    </button>
+
+
+                </div>
+
+
+                <div class="row total">
+
+                    <span>
+                        TOPLAM
+                    </span>
+
+                    <strong>
+                        ₺${total.toLocaleString("tr-TR")}
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="checkout"
+                    onclick="checkout()"
+                >
+                    SATIN ALMAYA DEVAM ET →
+                </button>
+
+
+                <a
+                    class="continue"
+                    href="index.html"
+                >
+                    ← ALIŞVERİŞE DEVAM ET
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+/* BAŞLAT */
+
+render();
+
+</script>
+
+</body>
+</html>
+```
